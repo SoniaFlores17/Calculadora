@@ -1,12 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Calculadora</h1>
+        <div class="row">
+            <div class="col-12">
+                <input type="text" id="display" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(7)">7</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(8)">8</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(9)">9</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary btn-block" onclick="operar('+')">+</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(4)">4</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(5)">5</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(6)">6</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary btn-block" onclick="operar('-')">-</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(1)">1</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(2)">2</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(3)">3</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary btn-block" onclick="operar('*')">*</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button class="btn btn-primary btn-block" onclick="agregarNumero(0)">0</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary btn-block" onclick="borrar()">C</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary btn-block" onclick="operar('/')">/</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-success btn-block" onclick="calcular()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let operacion = "";
+        
+        function agregarNumero(numero) {
+            operacion += numero;
+            document.getElementById("display").value = operacion;
+        }
+        
+        function operar(operador) {
+            operacion += operador;
+            document.getElementById("display").value = operacion;
+        }
+        
+        function calcular() {
+            let resultado = eval(operacion);
+            document.getElementById("display").value = resultado;
+            operacion = resultado.toString();
+        }
+        
+        function borrar() {
+            operacion = "";
+            document.getElementById("display").value = "";
+        }
+    </script>
 </body>
 </html>
